@@ -259,6 +259,14 @@
             <version>1.8.3</version>
         </dependency>
 
+        <!-- solving error [javax.xml.ws does not exist] https://askubuntu.com/questions/1149523/package-javax-jws-does-not-exist-->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
+            <version>2.3.0</version>
+            <type>pom</type>
+        </dependency>
+
 
 
     </dependencies>

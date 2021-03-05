@@ -19,11 +19,14 @@ WORKDIR $BASE_DIR
 
 # Install basics
 RUN apt-get update && \
-	apt-get -y install mysql-server && \
+	apt-get -y install mariadb-server && \
 	apt-get -y install apache2 && \
-	apt-get install -y php7.0 && \
-	apt-get install -y libapache2-mod-php7.0 && \
+	apt-get install -y php && \
+	apt-get install -y libapache2-mod-php && \
 	apt-get clean
+    #apt --yes install software-properties-common && \
+    #add-apt-repository ppa:ondrej/php && \
+    #apt-get update && \
 
 
 COPY $LOCAL_DOCKER_DIR/onprem-dataturks.com.conf /etc/apache2/sites-available/
@@ -31,7 +34,7 @@ COPY $LOCAL_DOCKER_DIR/onprem-dataturks.com.conf /etc/apache2/sites-available/00
 
 
 RUN a2enmod proxy_http && \
-    a2enmod php7.0 && \
+    a2enmod php7.3 && \
     a2ensite onprem-dataturks.com.conf
 
 
@@ -47,7 +50,7 @@ RUN chmod +x ./init.sh && \
 
 #Install Node 8
 RUN apt-get -y install build-essential && \
-	curl -sL https://deb.nodesource.com/setup_8.x | bash && \
+	curl -sL https://deb.nodesource.com/setup_10.x | bash && \
 	apt-get install --yes nodejs && \
 	node -v && \
 	npm -v && \ 
@@ -85,6 +88,7 @@ COPY $LOCAL_BAZAAR_DIR/onprem.php $BAZAR_PARENT_DIR/bazaar/onprem.php
 WORKDIR $BAZAR_PARENT_DIR/bazaar
 RUN rm -rf $BAZAR_PARENT_DIR/bazaar/uploads && \
 	mkdir $BAZAR_PARENT_DIR/bazaar/uploads && \
+    npm install react-native firebase@4.6.2 --save && \
 	npm install && \
 	npm run build-onprem && \
 	npm prune
