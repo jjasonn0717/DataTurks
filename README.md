@@ -16,7 +16,7 @@ docker build -t MY_TAG . -f ./hope/docker/Dockerfile
 
 #### To start a docker container that hosts the UI of Dataturks, run:
 ```
-docker run -d -p 80:80 my_dataturks_image
+docker run -d -p 80:80 MY_TAG
 ```
 
 #### To get access to the Dataturks UI, go to http://localhost/projects/login from your preferred browser.
