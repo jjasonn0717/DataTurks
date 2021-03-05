@@ -8,7 +8,9 @@ brew install maven
 
 #### To build a docker image, run:
 ```
+cd hope
 mvn package -DskipTests
+cd ..
 docker build -t MY_TAG . -f ./hope/docker/Dockerfile
 ```
 
