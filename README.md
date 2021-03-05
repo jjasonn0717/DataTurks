@@ -1,8 +1,14 @@
 # DataTurks
 ML data annotations made super easy for teams. Just upload data, add your team and build training/evaluation dataset in hours.
 
+#### First install maven if haven't already. On macOS, run:
+```
+brew install maven
+```
+
 #### To build a docker image, run:
 ```
+mvn package -DskipTests
 docker build -t MY_TAG . -f ./hope/docker/Dockerfile
 ```
 
