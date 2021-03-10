@@ -57,18 +57,29 @@ def randompassword():
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="generate random passwords")
-    parser.add_argument('--input', required=True, help="the path to the work profiles")
+    parser = argparse.ArgumentParser(description="generate the profiles of workers")
+    parser.add_argument('--input', required=True, help="the path to the emails of the workers")
+    parser.add_argument('--output', required=True, help="the path to the output worker profiles")
     parser.add_argument('--seed', type=int, default=0, help="number of passwords to generate")
     args = parser.parse_args()
 
     random.seed(args.seed)
 
     with open(args.input, 'r') as f:
-        work_profiles = json.load(f)
+        worker_profiles = {}
+        for idx, email in enumerate(f):
+            email = email.strip()
+            assert email.endswith("@instacart.com"), email
+            name = email[:-14]
+            firstname = "".join(name.split('.')[:-1]).capitalize()
+            secondname = name.split('.')[-1].capitalize()
+            worker_profiles[email] = {
+                "worker_id": idx,
+                "email": email,
+                "firstname": firstname,
+                "secondname": secondname,
+                'password': randompassword()
+            }
 
-    for email in work_profiles:
-        work_profiles[email]['password'] = randompassword()
-
-    with open(args.input, 'w') as f:
-        json.dump(work_profiles, f, indent=2)
+    with open(args.output, 'w') as f:
+        json.dump(worker_profiles, f, indent=2)

@@ -194,14 +194,14 @@ if __name__ == '__main__':
         verify_proj_name = f"Verification Task {worker_id+1}"
         verify_proj_id = DataturksCreateVerifyProject(ip, cookie, verify_proj_name, all_tags)
 
-        response = DataturksUploadData(ip, cookie, verify_proj_id, "./data/milk_rule_based_annotations_100.jsonl")
+        response = DataturksUploadData(ip, cookie, verify_proj_id, f"./data/milk_rule_based_annotations_verify_{worker_id}.jsonl")
 
     # create project and uplaod data for editing task (workflow 2)
     if 'edit' in workflows:
         edit_proj_name = f"Editing Task {worker_id+1}"
         edit_proj_id = DataturksCreateEditProject(ip, cookie, edit_proj_name, all_tags)
 
-        response = DataturksUploadData(ip, cookie, edit_proj_id, "./data/milk_rule_based_annotations_100.jsonl")
+        response = DataturksUploadData(ip, cookie, edit_proj_id, f"./data/milk_rule_based_annotations_edit_{worker_id}.jsonl")
 
 
     '''

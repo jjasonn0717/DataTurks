@@ -5,5 +5,33 @@
     "firstname": "Ankita",
     "secondname": "Pandey",
     "password": "Z:)rk6$#Yod#"
+  },
+  "aa.bb@instacart.com": {
+    "worker_id": 1,
+    "email": "aa.bb@instacart.com",
+    "firstname": "Aa",
+    "secondname": "Bb",
+    "password": "$Dy@>v4hRfCk"
+  },
+  "cc.dd@instacart.com": {
+    "worker_id": 2,
+    "email": "cc.dd@instacart.com",
+    "firstname": "Cc",
+    "secondname": "Dd",
+    "password": "8IVq0~WgTUp*"
+  },
+  "ee.ff@instacart.com": {
+    "worker_id": 3,
+    "email": "ee.ff@instacart.com",
+    "firstname": "Ee",
+    "secondname": "Ff",
+    "password": "S<bBwf1p(k~?"
+  },
+  "gg.hh@instacart.com": {
+    "worker_id": 4,
+    "email": "gg.hh@instacart.com",
+    "firstname": "Gg",
+    "secondname": "Hh",
+    "password": "S$E2b<q?a|V."
   }
 }
