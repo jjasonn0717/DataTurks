@@ -8,3 +8,6 @@ webpack-assets.json
 webpack-stats.json
 npm-debug.log
 *.swp
+.env/
+*.DS_Store
+data/
