@@ -10,4 +10,4 @@ else
 fi
 
 # run the docker container
-docker run -d -p 80:80 --name dataturks stlin0717/dataturks:wscript $1 $2
+docker run -d -p 80:80 --name dataturks stlin0717/dataturks:wscript "$1" "$2"

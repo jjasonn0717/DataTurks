@@ -19,7 +19,7 @@ unzip dataturks_annotation_src.zip
 
 echo "start the python script"
 cd ./dataturks_annotation_src
-bash setup.sh $1 $2
+bash setup.sh "$1" "$2"
 
 
 while true; do sleep 1; done

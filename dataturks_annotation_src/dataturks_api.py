@@ -153,7 +153,8 @@ def DataturksGetProjectDetails(ip, cookie, proj_id):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="create annotation tasks")
     parser.add_argument('--email', required=True, help="email of the worker")
-    parser.add_argument('--workflow', required=True, help="the annotation workflow to run")
+    parser.add_argument('--workflow', required=True, nargs='+', choices=['verify', 'edit'], help="the annotation workflow to run")
+    #parser.add_argument('--workflow', required=True, help="the annotation workflow to run")
     args = parser.parse_args()
 
     # get the worker profile
@@ -169,7 +170,8 @@ if __name__ == '__main__':
     ip = "http://localhost"
 
     # workflow
-    workflows = set(args.workflow.split("-"))
+    workflows = set(args.workflow)
+    #workflows = set(args.workflow.split("-"))
 
     # worker profile
     email = worker_profile['email']
@@ -187,7 +189,7 @@ if __name__ == '__main__':
         lines = f.readlines()
         assert len(lines) == 1
         all_tags = lines[0].split(', ')
-        assert len(all_tags) == 66
+        #assert len(all_tags) == 66
 
     # create project and uplaod data for verification task (workflow 1)
     if 'verify' in workflows:
