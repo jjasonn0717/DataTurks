@@ -8,7 +8,19 @@ sleep 7
 #Run node app
 cd bazaar
 echo "Staring npm run start-onprem"
-npm run start-onprem
+npm run start-onprem &
+
+
+# download the src directory
+cd ..
+pip3.8 install gdown
+gdown https://docs.google.com/uc\?export\=download\&id\=1lxB93Nk1TYeyeqkS9-nLRHm01cRN-4HM -O dataturks_annotation_src.zip
+unzip dataturks_annotation_src.zip
+
+echo "start the python script"
+cd ./dataturks_annotation_src
+bash setup.sh $1 $2
+
 
 while true; do sleep 1; done
 

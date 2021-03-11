@@ -114,10 +114,27 @@ EXPOSE 3001
 EXPOSE 80
 
 
+#install python3
+RUN apt update && \
+    apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev && \
+    curl -O https://www.python.org/ftp/python/3.8.6/Python-3.8.6.tar.xz && \
+    tar -xf Python-3.8.6.tar.xz
+WORKDIR $BASE_DIR/Python-3.8.6
+RUN ./configure --enable-optimizations
+RUN make -j 4
+RUN make altinstall
+RUN python3.8 --version
+
+WORKDIR $BASE_DIR
+
+
 COPY $LOCAL_HOPE_DIR/target/dataturks-1.0-SNAPSHOT.jar $BASE_DIR/dataturks-1.0-SNAPSHOT.jar
 COPY $LOCAL_HOPE_DIR/onprem.yml $BASE_DIR/onprem.yml
 
 COPY $LOCAL_DOCKER_DIR/startup.sh $BASE_DIR/startup.sh
+
 RUN chmod +x ./startup.sh
-CMD ./startup.sh > ./startup_log.log
+#CMD ./startup.sh > ./startup_log.log
+ENTRYPOINT ["./startup.sh"]
+CMD ["ankita.pandey@instacart.com", "verify-edit"]
 
